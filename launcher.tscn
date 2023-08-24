@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://cndv634uxjja0"]
+[gd_scene load_steps=4 format=3 uid="uid://cndv634uxjja0"]
+
+[ext_resource type="Script" path="res://PlayButton.gd" id="1_lyxj0"]
+[ext_resource type="Script" path="res://LanguagesButton.gd" id="2_tlxs1"]
+[ext_resource type="Script" path="res://ActualLanguage.gd" id="3_k2c7o"]
 
 [node name="Launcher" type="Control"]
 layout_mode = 3
@@ -29,6 +33,7 @@ vertical = true
 [node name="PlayButton" type="Button" parent="BoxContainer"]
 layout_mode = 2
 text = "Play"
+script = ExtResource("1_lyxj0")
 metadata/_edit_use_anchors_ = true
 
 [node name="NoVideoButton" type="CheckButton" parent="BoxContainer"]
@@ -53,7 +58,21 @@ popup/item_2/text = "English"
 popup/item_2/id = 2
 popup/item_3/text = "Czech"
 popup/item_3/id = 3
+script = ExtResource("2_tlxs1")
 metadata/_edit_use_anchors_ = true
+
+[node name="ActualLanguage" type="Label" parent="BoxContainer/LanguagesButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -13.0
+offset_right = 126.0
+offset_bottom = 13.0
+grow_vertical = 2
+vertical_alignment = 1
+script = ExtResource("3_k2c7o")
 
 [node name="ResolutionsButton" type="MenuButton" parent="BoxContainer"]
 layout_mode = 2
@@ -61,3 +80,6 @@ size_flags_horizontal = 2
 size_flags_vertical = 10
 text = "Resolutions:"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="BoxContainer/PlayButton" to="BoxContainer/PlayButton" method="_on_pressed"]
+[connection signal="about_to_popup" from="BoxContainer/LanguagesButton" to="BoxContainer/LanguagesButton" method="_on_about_to_popup"]
