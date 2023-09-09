@@ -81,6 +81,6 @@ func selectLanguage(file, type, index):
 	
 func _on_item_selected(index):
 	selectLanguage("Settings.ini","Default=",index)
-	selectLanguage("Data/CONST.ini","Language=",index)
+	selectLanguage("Data/CONST.INI","Language=",index)
 	
 	

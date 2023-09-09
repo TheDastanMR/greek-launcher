@@ -1,17 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://cndv634uxjja0"]
+[gd_scene load_steps=24 format=3 uid="uid://cndv634uxjja0"]
 
-[ext_resource type="Script" path="res://PlayButton.gd" id="1_lyxj0"]
-[ext_resource type="Texture2D" uid="uid://c2twtnrxveb06" path="res://assets/background.png" id="1_pfh7x"]
-[ext_resource type="Theme" uid="uid://bqh72mb3wiysl" path="res://Play_theme.tres" id="2_6ar6t"]
-[ext_resource type="Script" path="res://LanguageOptionButton.gd" id="2_q032d"]
-[ext_resource type="Script" path="res://ResolutionOptionButton.gd" id="2_wqvvj"]
-[ext_resource type="Theme" uid="uid://drmmnjft5m61w" path="res://Button_check.tres" id="4_ro80q"]
-[ext_resource type="Theme" uid="uid://draur33s3rpem" path="res://List_theme.tres" id="5_8v4m0"]
-[ext_resource type="Texture2D" uid="uid://d1b85fcwru6bu" path="res://assets/ExitHover.png" id="8_f8oba"]
-[ext_resource type="Texture2D" uid="uid://cpb1jwpmivwgc" path="res://assets/ExitNormal.png" id="9_iuesv"]
-[ext_resource type="Script" path="res://CloseButton.gd" id="9_rfqqt"]
-[ext_resource type="Texture2D" uid="uid://box8lnvit6kl8" path="res://assets/ExitPressed.png" id="10_uc7gy"]
-[ext_resource type="Theme" uid="uid://dmkml2iqchnw4" path="res://Credits_theme.tres" id="12_5v5ha"]
+[ext_resource type="Texture2D" uid="uid://c2twtnrxveb06" path="res://assets/background.png" id="1_72h3o"]
+[ext_resource type="Theme" uid="uid://bqh72mb3wiysl" path="res://Play_theme.tres" id="2_3g3dh"]
+[ext_resource type="Script" path="res://PlayButton.gd" id="3_kkr1a"]
+[ext_resource type="Theme" uid="uid://drmmnjft5m61w" path="res://Button_check.tres" id="4_u8l61"]
+[ext_resource type="Theme" uid="uid://draur33s3rpem" path="res://List_theme.tres" id="5_m4871"]
+[ext_resource type="Script" path="res://LanguageOptionButton.gd" id="6_3lapd"]
+[ext_resource type="Script" path="res://ResolutionOptionButton.gd" id="7_54ihi"]
+[ext_resource type="Texture2D" uid="uid://d1b85fcwru6bu" path="res://assets/ExitHover.png" id="8_r71ha"]
+[ext_resource type="Texture2D" uid="uid://cpb1jwpmivwgc" path="res://assets/ExitNormal.png" id="9_0gmdt"]
+[ext_resource type="Texture2D" uid="uid://box8lnvit6kl8" path="res://assets/ExitPressed.png" id="10_ai8tv"]
+[ext_resource type="Script" path="res://CloseButton.gd" id="11_an3ic"]
+[ext_resource type="Theme" uid="uid://dmkml2iqchnw4" path="res://Credits_theme.tres" id="12_acfsl"]
+[ext_resource type="Script" path="res://CreditsButton.gd" id="13_hy2xi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxkwg"]
 
@@ -22,13 +23,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dnh8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_57psu"]
-texture = ExtResource("8_f8oba")
+texture = ExtResource("8_r71ha")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xms4"]
-texture = ExtResource("9_iuesv")
+texture = ExtResource("9_0gmdt")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ux4j"]
-texture = ExtResource("10_uc7gy")
+texture = ExtResource("10_ai8tv")
 
 [sub_resource type="Theme" id="Theme_bourl"]
 Button/styles/hover = SubResource("StyleBoxTexture_57psu")
@@ -56,7 +57,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_pfh7x")
+texture = ExtResource("1_72h3o")
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 1
@@ -67,10 +68,10 @@ anchor_right = 0.896667
 anchor_bottom = 0.393333
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_6ar6t")
+theme = ExtResource("2_3g3dh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yxkwg")
 text = "Play"
-script = ExtResource("1_lyxj0")
+script = ExtResource("3_kkr1a")
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 2
@@ -80,7 +81,7 @@ anchor_right = 0.403333
 anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_ro80q")
+theme = ExtResource("4_u8l61")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h1po1")
 text = "No video"
 alignment = 1
@@ -107,10 +108,10 @@ anchor_right = 1.98291
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("5_8v4m0")
+theme = ExtResource("5_m4871")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h4qo4")
 alignment = 1
-script = ExtResource("2_q032d")
+script = ExtResource("6_3lapd")
 metadata/_edit_use_anchors_ = true
 
 [node name="Resolution" type="Label" parent="."]
@@ -132,10 +133,10 @@ anchor_right = 1.98291
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("5_8v4m0")
+theme = ExtResource("5_m4871")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8dnh8")
 alignment = 1
-script = ExtResource("2_wqvvj")
+script = ExtResource("7_54ihi")
 metadata/_edit_use_anchors_ = true
 
 [node name="CloseButton" type="Button" parent="."]
@@ -149,7 +150,7 @@ offset_right = 11.7868
 offset_bottom = 11.7867
 theme = SubResource("Theme_bourl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hp2q7")
-script = ExtResource("9_rfqqt")
+script = ExtResource("11_an3ic")
 metadata/_edit_use_anchors_ = true
 
 [node name="CreditsButton" type="Button" parent="."]
@@ -161,11 +162,13 @@ anchor_right = 0.184211
 anchor_bottom = 0.779605
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("12_5v5ha")
+theme = ExtResource("12_acfsl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qv3o2")
+script = ExtResource("13_hy2xi")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
 [connection signal="item_selected" from="Language/LanguageOptionButton" to="Language/LanguageOptionButton" method="_on_item_selected"]
 [connection signal="item_selected" from="Resolution/ResolutionOptionButton" to="Resolution/ResolutionOptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]

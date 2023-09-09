@@ -51,7 +51,7 @@ func actualResolutionPosition(file, type):
 	
 func addResolution():
 	#load file
-	var config = FileAccess.open("Data/Interface/Menu/Template.ini", FileAccess.READ)
+	var config = FileAccess.open("Data/Interface/MENU/TEMPLATE.INI", FileAccess.READ)
 	
 	#crate a variabile for store all lines in settings.ini
 	var lines = []
@@ -61,8 +61,8 @@ func addResolution():
 		lines.push_back(config.get_line())
 		
 	#search in lines languages position and store
-	var CurrentResH = lines[actualResolutionPosition("Data/Interface/Menu/Template.ini","Larghezza=")]
-	var CurrentResV = lines[actualResolutionPosition("Data/Interface/Menu/Template.ini","Altezza=")]
+	var CurrentResH = lines[actualResolutionPosition("Data/Interface/MENU/TEMPLATE.INI","Larghezza=")]
+	var CurrentResV = lines[actualResolutionPosition("Data/Interface/MENU/TEMPLATE.INI","Altezza=")]
 	
 	print("Actual Resolution:\n", CurrentResH, "x",CurrentResV)
 	
@@ -109,5 +109,5 @@ func selectResolution(file, typeH, typeV, index):
 	
 	
 func _on_item_selected(index):
-	selectResolution("Data/Interface/Menu/Template.ini","Larghezza=","Altezza=",index)
-	selectResolution("Config.ini","WindowX=","WindowY=",index)
+	selectResolution("Data/Interface/MENU/TEMPLATE.INI","Larghezza=","Altezza=",index)
+	selectResolution("config.ini","WindowX=","WindowY=",index)
