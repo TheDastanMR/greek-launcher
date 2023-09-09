@@ -1,35 +1,86 @@
 extends OptionButton
 
-var Languages = ["Italian","English","Spanish","Czech"]
+const LANGUAGES = ["English", "Italian", "Spanish", "Czech"]
 
 func _ready():
-	print("Language Started")
-	var settings = ConfigFile.new()
-	var err = settings.load("Settings.ini")
+	print("Language Started\n")
+	addLanguge()
 	
-	if err != OK:
-		print("not founded")
-		return
+	
+func actualLanguagePosition(file, type):
+	#load file
+	var langfile = FileAccess.open(file, FileAccess.READ)
+	
+	#crate a variabile for store all lines in file
+	var lines = []
+	
+	#cicle in file and store everything in a array positions
+	while langfile.get_position() < langfile.get_length():
+		lines.push_back(langfile.get_line())
+	
+	#I made a search and a comparison for determinate which language is selected and return the position in file
+	var CurrentLanguagePos
+	for l in LANGUAGES:
+		CurrentLanguagePos = lines.find(type+l,0)
+		if (CurrentLanguagePos != -1):
+			break
+	return CurrentLanguagePos
+	
+	
+func addLanguge():
+	#load file
+	var settings = FileAccess.open("Settings.ini", FileAccess.READ)
+	
+	#crate a variabile for store all lines in settings.ini
+	var lines = []
+	
+	#cicle in settings.ini and store everything in a array positions
+	while settings.get_position() < settings.get_length():
+		lines.push_back(settings.get_line())
 		
-	for l in Languages:
+	#search in lines languages position and store
+	var CurrentLanguage = lines[actualLanguagePosition("Settings.ini","Default=")]
+	
+	var i = 0
+	var readedLanguage
+	for l in LANGUAGES:
 		add_item(l)	
 		print("Founded languages:", l)
+		var combineDefaultLang = "Default="+l
 		
-	var _selected_language = settings.get_value("Language","Default")
-	print("Language selected:", _selected_language)
-
-func _on_item_selected(index):
-	print ("Language press")	
-	var settings = ConfigFile.new()
-	var err = settings.load("Settings.ini")
-	var _selected_languge = get_item_text(index)
+		if combineDefaultLang == CurrentLanguage:
+			readedLanguage = l
+			select(i)
+		i += 1
+	print("\nReaded language:",readedLanguage)
 	
-	if err != OK:
-		print("Settings.ini not founded")
-		return
+	
+func selectLanguage(file, type, index):
+	var selected_file = FileAccess.open(file, FileAccess.READ)
+	var file_lines = []
+	var new_file_lines
+	var selected_languge = get_item_text(index)
+	
+	#Store in lines the line of the file
+	while selected_file.get_position() < selected_file.get_length():
+		file_lines.push_back(selected_file.get_line())
 		
-	var _language_readed = settings.get_value("Language","Default")
-	print("Language readed:",_language_readed)
-	settings.set_value("Language", "Default",_selected_languge)
-	settings.save("Settings.ini")
-	print("Language writed:",_selected_languge)
+	
+	#Replace the array language whit one i choose
+	file_lines[actualLanguagePosition(file,type)] = type+selected_languge
+	
+		#Open the file and erase everything inside for write it.
+	file = FileAccess.open(file, FileAccess.WRITE)
+	
+	#Iterate in var lines (where i store all content of the text file) and paste in opened file
+	for i in file_lines:
+		new_file_lines = String(i)
+		file.store_line(new_file_lines)
+	print ("Language select:",selected_languge)
+	
+	
+func _on_item_selected(index):
+	selectLanguage("Settings.ini","Default=",index)
+	selectLanguage("Data/CONST.ini","Language=",index)
+	
+	
