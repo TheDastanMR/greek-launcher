@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cndv634uxjja0"]
+[gd_scene load_steps=25 format=3 uid="uid://cndv634uxjja0"]
 
 [ext_resource type="Texture2D" uid="uid://c2twtnrxveb06" path="res://assets/background.png" id="1_72h3o"]
 [ext_resource type="Theme" uid="uid://bqh72mb3wiysl" path="res://Play_theme.tres" id="2_3g3dh"]
 [ext_resource type="Script" path="res://PlayButton.gd" id="3_kkr1a"]
 [ext_resource type="Theme" uid="uid://drmmnjft5m61w" path="res://Button_check.tres" id="4_u8l61"]
+[ext_resource type="Script" path="res://CheckBoxMovies.gd" id="5_fir33"]
 [ext_resource type="Theme" uid="uid://draur33s3rpem" path="res://List_theme.tres" id="5_m4871"]
 [ext_resource type="Script" path="res://LanguageOptionButton.gd" id="6_3lapd"]
 [ext_resource type="Script" path="res://ResolutionOptionButton.gd" id="7_54ihi"]
@@ -22,19 +23,19 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dnh8"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_57psu"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_min00"]
 texture = ExtResource("8_r71ha")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xms4"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lqjy"]
 texture = ExtResource("9_0gmdt")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ux4j"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nl15v"]
 texture = ExtResource("10_ai8tv")
 
 [sub_resource type="Theme" id="Theme_bourl"]
-Button/styles/hover = SubResource("StyleBoxTexture_57psu")
-Button/styles/normal = SubResource("StyleBoxTexture_3xms4")
-Button/styles/pressed = SubResource("StyleBoxTexture_0ux4j")
+Button/styles/hover = SubResource("StyleBoxTexture_min00")
+Button/styles/normal = SubResource("StyleBoxTexture_3lqjy")
+Button/styles/pressed = SubResource("StyleBoxTexture_nl15v")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2q7"]
 
@@ -73,7 +74,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_yxkwg")
 text = "Play"
 script = ExtResource("3_kkr1a")
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="CheckBoxMovies" type="CheckBox" parent="."]
 layout_mode = 2
 anchor_left = 0.106667
 anchor_top = 0.623333
@@ -86,6 +87,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h1po1")
 text = "No video"
 alignment = 1
 clip_text = true
+script = ExtResource("5_fir33")
 metadata/_edit_use_anchors_ = true
 
 [node name="Language" type="Label" parent="."]
@@ -156,10 +158,10 @@ metadata/_edit_use_anchors_ = true
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.105263
-anchor_top = 0.700658
-anchor_right = 0.184211
-anchor_bottom = 0.779605
+anchor_left = 0.0263158
+anchor_top = 0.0263158
+anchor_right = 0.105264
+anchor_bottom = 0.105263
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("12_acfsl")
@@ -168,6 +170,7 @@ script = ExtResource("13_hy2xi")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="toggled" from="CheckBoxMovies" to="CheckBoxMovies" method="_on_toggled"]
 [connection signal="item_selected" from="Language/LanguageOptionButton" to="Language/LanguageOptionButton" method="_on_item_selected"]
 [connection signal="item_selected" from="Resolution/ResolutionOptionButton" to="Resolution/ResolutionOptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
