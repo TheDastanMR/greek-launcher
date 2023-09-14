@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=3 uid="uid://c6iim4sj4jd4m"]
+
+[ext_resource type="Texture2D" uid="uid://c2twtnrxveb06" path="res://assets/background.png" id="1_ftqkw"]
+[ext_resource type="Theme" uid="uid://dmkml2iqchnw4" path="res://themes/Credits_theme.tres" id="2_nv8hh"]
+[ext_resource type="Script" path="res://scripts/MainMenuButton.gd" id="3_scmbd"]
+[ext_resource type="Texture2D" uid="uid://d1b85fcwru6bu" path="res://assets/ExitHover.png" id="4_72abx"]
+[ext_resource type="Texture2D" uid="uid://cpb1jwpmivwgc" path="res://assets/ExitNormal.png" id="5_wi807"]
+[ext_resource type="Texture2D" uid="uid://box8lnvit6kl8" path="res://assets/ExitPressed.png" id="6_3bti4"]
+[ext_resource type="Script" path="res://scripts/CloseButton.gd" id="7_nklvu"]
+
+[sub_resource type="Theme" id="Theme_by3ds"]
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k15u4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5da1a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_57psu"]
+texture = ExtResource("4_72abx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xms4"]
+texture = ExtResource("5_wi807")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ux4j"]
+texture = ExtResource("6_3bti4")
+
+[sub_resource type="Theme" id="Theme_p6v3l"]
+Button/styles/hover = SubResource("StyleBoxTexture_57psu")
+Button/styles/normal = SubResource("StyleBoxTexture_3xms4")
+Button/styles/pressed = SubResource("StyleBoxTexture_0ux4j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhfos"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ftqkw")
+
+[node name="Credits" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = SubResource("Theme_by3ds")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k15u4")
+bbcode_enabled = true
+text = "[center]Credits:
+
+Rattlesmake Team:
+
+Razor
+TheMaster
+CaptainHighlander
+TheDastanMR
+
+Mediterranevm Team:
+Nichoghiro
+Axaros
+LadyBug GurenTaiga
+IL_PRINS
+Consul123
+IL Mietitore
+
+Other thanks:
+Caelum (Dubbing)
+MR.Wolf (Dubbing)
+Supreme19 (Programmer)
+DarkRitual (Tester)
+Kisame (Tester) 
+Gurkhan (Graphics)
+NuclearWinter (Graphics)
+vjeko1701 (Graphics)
+Edoardo1997 (Soundtracks)
+Camarada
+d4nijerez
+Gabrux5
+Skipi (Modding Tools)
+Giuseppe d'Addio
+Emanue
+Kame
+Husita (Czech translation)
+
+Launcher credits: TheDastanMR"
+selection_enabled = true
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.0263158
+anchor_top = 0.0263158
+anchor_right = 0.105263
+anchor_bottom = 0.105263
+theme = ExtResource("2_nv8hh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5da1a")
+script = ExtResource("3_scmbd")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.894737
+anchor_top = 0.0263158
+anchor_right = 0.934912
+anchor_bottom = 0.0664912
+offset_right = 11.7868
+offset_bottom = 11.7867
+theme = SubResource("Theme_p6v3l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rhfos")
+script = ExtResource("7_nklvu")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]
+[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
