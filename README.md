@@ -1,1 +1,2 @@
-# octo-spork-launcher
+# greek-launcher
+A launcher for Imperivm Greek Mod
