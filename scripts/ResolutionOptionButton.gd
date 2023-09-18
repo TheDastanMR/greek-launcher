@@ -38,14 +38,12 @@ func actualResolutionPosition(file, type):
 		CurrentRes = lines.find(type+res,0)
 		if (CurrentRes != -1):
 			return CurrentRes
-			break
 		ix += 0
 	for ry in Resolutions:
 		var res = var_to_str(Resolutions[ry].y)
 		CurrentRes = lines.find(type+res,0)
 		if (CurrentRes != -1):
 			return CurrentRes
-			break
 		iy += 0
 	
 	
