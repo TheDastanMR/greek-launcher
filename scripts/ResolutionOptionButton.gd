@@ -14,22 +14,16 @@ var Resolutions: Dictionary = {
 	
 	
 func _ready():
-	print("\nResolutions started\n")
 	addResolution()
 	
 	
 func actualResolutionPosition(file, type):
-	#load file
 	var resfile = FileAccess.open(file, FileAccess.READ)
-	
-	#create a variabile for store all lines in file
 	var lines = []
 	
-	#cycle in file and store everything in a array positions
 	while resfile.get_position() < resfile.get_length():
 		lines.push_back(resfile.get_line())
 		
-	#I made a search and a comparison for determinate which language is selected and return the position in file
 	var CurrentRes
 	var ix = 0
 	var iy = 0
@@ -48,26 +42,18 @@ func actualResolutionPosition(file, type):
 	
 	
 func addResolution():
-	#load file
 	var config = FileAccess.open("Data/Interface/MENU/TEMPLATE.INI", FileAccess.READ)
-	
-	#crate a variabile for store all lines in settings.ini
 	var lines = []
 	
-	#cycle in settings.ini and store everything in a array positions
 	while config.get_position() < config.get_length():
 		lines.push_back(config.get_line())
 		
-	#search in lines languages position and store
 	var CurrentResH = lines[actualResolutionPosition("Data/Interface/MENU/TEMPLATE.INI","Larghezza = ")]
 	var CurrentResV = lines[actualResolutionPosition("Data/Interface/MENU/TEMPLATE.INI","Altezza = ")]
-	
-	print("Actual Resolution:\n", CurrentResH, "x",CurrentResV)
 	
 	var i = 0
 	for r in Resolutions:
 		add_item(r)
-		print("Founded resolutions:",r)
 		var hRes = var_to_str(Resolutions.values()[i].x)
 		var vRes = var_to_str(Resolutions.values()[i].y)
 		
@@ -87,23 +73,16 @@ func selectResolution(file, typeH, typeV, index):
 	var selected_resolution_x = var_to_str(Resolutions.values()[index].x)
 	var selected_resolution_y = var_to_str(Resolutions.values()[index].y)
 	
-	#Store in lines the line of the file
 	while selected_file.get_position() < selected_file.get_length():
 		file_lines.push_back(selected_file.get_line())
 		
-	
-	#Replace the array language whit one i choose
 	file_lines[actualResolutionPosition(file,typeH)] = typeH+selected_resolution_x
 	file_lines[actualResolutionPosition(file,typeV)] = typeV+selected_resolution_y
-	
-		#Open the file and erase everything inside for write it.
 	file = FileAccess.open(file, FileAccess.WRITE)
 	
-	#Iterate in var lines (where i store all content of the text file) and paste in opened file
 	for i in file_lines:
 		new_file_lines = String(i)
 		file.store_line(new_file_lines)
-	print ("Resolution select:",selected_resolution_x,"x",selected_resolution_y)
 	
 	
 func _on_item_selected(index):

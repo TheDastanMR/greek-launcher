@@ -1,17 +1,12 @@
 extends CheckBox
 
 func actualCinematicsFilePosition(file, type):
-	#load file
 	var cinematicfile = FileAccess.open(file, FileAccess.READ)
-	
-	#crate a variabile for store all lines in file
 	var lines = []
 	
-	#cicle in file and store everything in a array positions
 	while cinematicfile.get_position() < cinematicfile.get_length():
 		lines.push_back(cinematicfile.get_line())
 	
-	#I made a search and a comparison for determinate which language is selected and return the position in file
 	var CurrentCinematicsPos
 	var state = ["true", "false"]
 	
