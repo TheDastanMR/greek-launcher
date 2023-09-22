@@ -18,6 +18,8 @@
 [ext_resource type="Theme" uid="uid://dmkml2iqchnw4" path="res://themes/Credits_theme.tres" id="16_n1l8u"]
 [ext_resource type="Script" path="res://scripts/CreditsButton.gd" id="17_f3muq"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4qo4"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qv3o2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_min00"]
@@ -35,8 +37,6 @@ Button/styles/normal = SubResource("StyleBoxTexture_3lqjy")
 Button/styles/pressed = SubResource("StyleBoxTexture_nl15v")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2q7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4qo4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxkwg"]
 
@@ -64,6 +64,37 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ecunc")
 
+[node name="LanguageOptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.404605
+anchor_top = 0.427632
+anchor_right = 0.894737
+anchor_bottom = 0.506579
+offset_left = -3.0
+offset_right = -3.0
+theme = ExtResource("3_vmjhg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h4qo4")
+alignment = 1
+script = ExtResource("4_p7awa")
+metadata/_edit_use_anchors_ = true
+
+[node name="Language" type="Label" parent="."]
+custom_minimum_size = Vector2(3.81, 0)
+layout_mode = 2
+anchor_left = -0.115132
+anchor_top = 0.427632
+anchor_right = 0.378289
+anchor_bottom = 0.513158
+offset_top = -4.57764e-05
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "LANGUAGE_TEXT"
+horizontal_alignment = 2
+script = ExtResource("2_gnpt2")
+metadata/_edit_use_anchors_ = true
+
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -90,36 +121,6 @@ offset_bottom = 11.7867
 theme = SubResource("Theme_bourl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hp2q7")
 script = ExtResource("15_3e8ug")
-metadata/_edit_use_anchors_ = true
-
-[node name="Language" type="Label" parent="."]
-custom_minimum_size = Vector2(3.81, 0)
-layout_mode = 2
-anchor_left = -0.115132
-anchor_top = 0.427632
-anchor_right = 0.378289
-anchor_bottom = 0.513158
-offset_bottom = -1.52588e-05
-grow_horizontal = 2
-grow_vertical = 2
-text = "LANGUAGE_TEXT"
-horizontal_alignment = 2
-script = ExtResource("2_gnpt2")
-metadata/_edit_use_anchors_ = true
-
-[node name="LanguageOptionButton" type="OptionButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.404605
-anchor_top = 0.427632
-anchor_right = 0.894737
-anchor_bottom = 0.506579
-offset_left = -3.0
-offset_right = -3.0
-theme = ExtResource("3_vmjhg")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_h4qo4")
-alignment = 1
-script = ExtResource("4_p7awa")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="."]
@@ -195,9 +196,9 @@ text = "CHECK_BOX_CINEMATICS"
 script = ExtResource("7_67b3w")
 metadata/_edit_use_anchors_ = true
 
+[connection signal="item_selected" from="LanguageOptionButton" to="LanguageOptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
-[connection signal="item_selected" from="LanguageOptionButton" to="LanguageOptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
 [connection signal="item_selected" from="ResolutionOptionButton" to="ResolutionOptionButton" method="_on_item_selected"]
 [connection signal="toggled" from="CheckBoxCinematics" to="CheckBoxCinematics" method="_on_toggled"]
